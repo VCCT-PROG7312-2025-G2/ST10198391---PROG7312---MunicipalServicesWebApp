@@ -1,0 +1,289 @@
+﻿@{
+    ViewData["Title"] = "Report Issues";
+    var categories = ViewBag.Categories as string[] ?? new string[] { "Sanitation", "Roads", "Water/Utilities", "Lighting", "Potholes", "Other" };
+}
+
+<div class="report-form">
+    <div class="card">
+        <div class="card-header">
+            <div class="form-header">
+                <h2><i class="fas fa-clipboard-list me-2"></i>Report an Issue</h2>
+                <p class="text-muted">Help us keep our city clean and safe by reporting issues in your neighborhood</p>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle me-2"></i>@TempData["Error"]
+                </div>
+            }
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>@TempData["Success"]
+                </div>
+            }
+
+            <form asp-action="Submit" asp-controller="Report" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-map-marker-alt me-1"></i>Location
+                            </label>
+                            <input name="location" class="form-control" id="location" required
+                                   placeholder="Enter the specific location of the issue" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-tags me-1"></i>Category
+                            </label>
+                            <select name="category" class="form-select" id="category" required>
+                                <option value="">-- Select category --</option>
+                                @foreach (var c in categories)
+                                {
+                                    <option>@c</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-align-left me-1"></i>Description
+                    </label>
+                    <textarea name="description" class="form-control" id="description" rows="5" required
+                              placeholder="Please provide a detailed description of the issue..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-paperclip me-1"></i>Attachments (Optional)
+                    </label>
+                    <div class="file-upload-area" id="fileUploadArea">
+                        <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-3"></i>
+                        <p class="mb-2">Drag and drop files here or click to browse</p>
+                        <input type="file" name="files" id="files" class="form-control" multiple
+                               accept="image/*,.pdf,.doc,.docx" style="display: none;" />
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="document.getElementById('files').click()">
+                            Choose Files
+                        </button>
+                    </div>
+                    <div id="attachmentList" class="small text-muted mt-2">No files attached.</div>
+                </div>
+
+                <div class="engagement-section">
+                    <label class="form-label">
+                        <i class="fas fa-chart-line me-1"></i>Form Completion Progress
+                    </label>
+                    <div class="progress mb-2">
+                        <div id="engagementBar" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                    </div>
+                    <div id="engagementMsg" class="engagement-message text-success">
+                        Thanks for helping your community — fill the form to submit!
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 justify-content-end">
+                    <a class="btn btn-secondary" href="/">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Main Menu
+                    </a>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-paper-plane me-2"></i>Submit Report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section ValidationScripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+@section Scripts {
+    <script>
+        // Functionality for file upload
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const filesInput = document.getElementById('files');
+        const attachmentList = document.getElementById('attachmentList');
+
+        // Functionality to drag and drop file
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('dragover');
+        });
+
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('dragover');
+        });
+
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('dragover');
+            filesInput.files = e.dataTransfer.files;
+            updateEngagement();
+        });
+
+        fileUploadArea.addEventListener('click', () => {
+            filesInput.click();
+        });
+
+        // Engagement script: Shows progress based on filled fields
+        const locationInput = document.getElementById('location');
+        const categoryInput = document.getElementById('category');
+        const descInput = document.getElementById('description');
+
+        const engagementBar = document.getElementById('engagementBar');
+        const engagementMsg = document.getElementById('engagementMsg');
+
+        function updateEngagement() {
+            let score = 0;
+            if (locationInput.value.trim()) score += 35;
+            if (categoryInput.value.trim()) score += 25;
+            if (descInput.value.trim()) score += 30;
+            if (filesInput.files.length > 0) score += 10;
+            if (score > 100) score = 100;
+
+            engagementBar.style.width = score + '%';
+            engagementBar.innerText = score + '%';
+
+            if (score < 20) {
+                engagementMsg.innerText = 'Thanks for starting — every report helps.';
+                engagementMsg.className = 'engagement-message text-muted';
+            } else if (score < 50) {
+                engagementMsg.innerText = 'Good progress — keep going!';
+                engagementMsg.className = 'engagement-message text-warning';
+            } else if (score < 80) {
+                engagementMsg.innerText = 'Almost there — one final step!';
+                engagementMsg.className = 'engagement-message text-primary';
+            } else {
+                engagementMsg.innerText = 'Excellent — ready to submit!';
+                engagementMsg.className = 'engagement-message text-success';
+            }
+
+            // Updates attachment list
+            if (filesInput.files.length > 0) {
+                const fileNames = Array.from(filesInput.files).map(f => f.name);
+                attachmentList.innerHTML = `<i class="fas fa-check-circle text-success me-1"></i>${fileNames.length} file(s) selected: ${fileNames.join(', ')}`;
+            } else {
+                attachmentList.innerHTML = '<i class="fas fa-info-circle text-muted me-1"></i>No files attached.';
+            }
+        }
+
+        [locationInput, categoryInput, descInput, filesInput].forEach(el => el.addEventListener('input', updateEngagement));
+        filesInput.addEventListener('change', updateEngagement);
+
+        // Real-time validation
+        locationInput.addEventListener('blur', function() {
+            validateField('location', this.value.trim(), 'Location is required.');
+        });
+
+        categoryInput.addEventListener('change', function() {
+            validateField('category', this.value.trim(), 'Category is required.');
+        });
+
+        descInput.addEventListener('blur', function() {
+            const value = this.value.trim();
+            if (!value) {
+                validateField('description', value, 'Description is required.');
+            } else if (value.length < 10) {
+                validateField('description', value, 'Description must be at least 10 characters long.');
+            } else {
+                clearFieldError('description');
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+            }
+        });
+
+        function validateField(fieldId, value, errorMessage) {
+            const field = document.getElementById(fieldId);
+            if (!value) {
+                showFieldError(fieldId, errorMessage);
+            } else {
+                clearFieldError(fieldId);
+                field.classList.remove('is-invalid');
+                field.classList.add('is-valid');
+            }
+        }
+
+        function clearFieldError(fieldId) {
+            const field = document.getElementById(fieldId);
+            const existingError = field.parentNode.querySelector('.field-error');
+            if (existingError) {
+                existingError.remove();
+            }
+        }
+
+        // Form validation and submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            // Get form elements
+            const location = document.getElementById('location').value.trim();
+            const category = document.getElementById('category').value.trim();
+            const description = document.getElementById('description').value.trim();
+
+            // Clears previous error messages
+            document.querySelectorAll('.field-error').forEach(el => el.remove());
+            document.querySelectorAll('.form-control').forEach(el => el.classList.remove('is-invalid'));
+
+            let hasErrors = false;
+
+            // Validates location
+            if (!location) {
+                showFieldError('location', 'Location is required.');
+                hasErrors = true;
+            }
+
+            // Validates category
+            if (!category) {
+                showFieldError('category', 'Category is required.');
+                hasErrors = true;
+            }
+
+            // Validates description
+            if (!description) {
+                showFieldError('description', 'Description is required.');
+                hasErrors = true;
+            } else if (description.length < 10) {
+                showFieldError('description', 'Description must be at least 10 characters long.');
+                hasErrors = true;
+            }
+
+            // If no errors, submit the form
+            if (!hasErrors) {
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.innerHTML = '<span class="spinner me-2"></span>Submitting...';
+                submitBtn.disabled = true;
+
+                this.submit();
+            }
+        });
+
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            field.classList.add('is-invalid');
+
+            // Removes existing error message
+            const existingError = field.parentNode.querySelector('.field-error');
+            if (existingError) {
+                existingError.remove();
+            }
+
+            // Adds new error message
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'field-error text-danger small mt-1';
+            errorDiv.innerHTML = `<i class="fas fa-exclamation-circle me-1"></i>${message}`;
+            field.parentNode.appendChild(errorDiv);
+        }
+
+        updateEngagement();
+    </script>
+}
