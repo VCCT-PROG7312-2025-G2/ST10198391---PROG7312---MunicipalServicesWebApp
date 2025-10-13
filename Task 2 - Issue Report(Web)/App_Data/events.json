@@ -53,6 +53,50 @@
     "Location": "City Hall",
     "ImageUrl": null,
     "IsAnnouncement": false
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000006",
+    "Title": "Library Storytime for Kids",
+    "Description": "Weekly storytelling and crafts for children aged 4-8.",
+    "Category": "Community",
+    "StartDate": "2025-11-03T10:00:00",
+    "EndDate": "2025-11-03T11:00:00",
+    "Location": "Central Library",
+    "ImageUrl": null,
+    "IsAnnouncement": false
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000007",
+    "Title": "Recycling Drop-off Day",
+    "Description": "Bring recyclables for safe disposal and earn green points.",
+    "Category": "Environment",
+    "StartDate": "2025-11-06T09:00:00",
+    "EndDate": "2025-11-06T15:00:00",
+    "Location": "Works Depot, Milton Road",
+    "ImageUrl": null,
+    "IsAnnouncement": true
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000008",
+    "Title": "Summer Concert in the Park",
+    "Description": "Free outdoor concert featuring local bands. Bring a picnic blanket.",
+    "Category": "Culture",
+    "StartDate": "2025-11-14T18:00:00",
+    "EndDate": "2025-11-14T21:00:00",
+    "Location": "Green Point Park",
+    "ImageUrl": null,
+    "IsAnnouncement": false
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000009",
+    "Title": "Vaccination Clinic Pop-up",
+    "Description": "Free flu vaccinations while stocks last. Bring ID.",
+    "Category": "Health",
+    "StartDate": "2025-11-12T09:00:00",
+    "EndDate": "2025-11-12T13:00:00",
+    "Location": "Community Centre",
+    "ImageUrl": null,
+    "IsAnnouncement": true
   }
 ]
 
