@@ -1,3 +1,59 @@
-{
+[
+  {
+    "Id": "00000000-0000-0000-0000-000000000001",
+    "Title": "Community Clean-Up Day",
+    "Description": "Join us to clean local parks and streets. Gloves and bags provided.",
+    "Category": "Community",
+    "StartDate": "2025-11-02T09:00:00",
+    "EndDate": "2025-11-02T12:00:00",
+    "Location": "Central Park",
+    "ImageUrl": null,
+    "IsAnnouncement": false
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000002",
+    "Title": "Water Maintenance Notice",
+    "Description": "Scheduled maintenance may affect water supply in certain areas.",
+    "Category": "Utilities",
+    "StartDate": "2025-11-05T00:00:00",
+    "EndDate": "2025-11-05T23:59:59",
+    "Location": "Citywide",
+    "ImageUrl": null,
+    "IsAnnouncement": true
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000003",
+    "Title": "Road Closure: Main Street",
+    "Description": "Main Street will be closed for resurfacing. Use alternate routes.",
+    "Category": "Transport",
+    "StartDate": "2025-11-08T06:00:00",
+    "EndDate": "2025-11-09T18:00:00",
+    "Location": "Main Street",
+    "ImageUrl": null,
+    "IsAnnouncement": true
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000004",
+    "Title": "Farmers' Market",
+    "Description": "Fresh produce and local crafts every Saturday.",
+    "Category": "Market",
+    "StartDate": "2025-11-01T08:00:00",
+    "EndDate": "2025-11-01T14:00:00",
+    "Location": "Town Square",
+    "ImageUrl": null,
+    "IsAnnouncement": false
+  },
+  {
+    "Id": "00000000-0000-0000-0000-000000000005",
+    "Title": "Public Council Meeting",
+    "Description": "Monthly council meeting open to the public.",
+    "Category": "Governance",
+    "StartDate": "2025-11-10T17:00:00",
+    "EndDate": "2025-11-10T19:00:00",
+    "Location": "City Hall",
+    "ImageUrl": null,
+    "IsAnnouncement": false
+  }
+]
 
-}
+
