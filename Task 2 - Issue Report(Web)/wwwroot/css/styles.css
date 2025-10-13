@@ -121,6 +121,31 @@ p {
         color: white !important;
     }
 
+.brand-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.navbar .navbar-brand .brand-logo {
+    width: 108px !important;
+    height: 38px !important;
+    max-height: none !important;
+    flex-shrink: 0;
+}
+
+.card-header .brand-logo {
+    width: 166px !important;
+    height: 56px !important;
+}
+
+.brand-logo-horizontal {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+}
+
+
 .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     font-weight: 500;
