@@ -1,5 +1,114 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Task_2___Issue_Report_Web_.Models
 @{
+    ViewData["Title"] = "Local Events & Announcements";
+    var categories = ViewBag.Categories as string[] ?? Array.Empty<string>();
+    var selectedCategory = ViewBag.SelectedCategory as string ?? string.Empty;
+    var selectedDate = ViewBag.SelectedDate as string ?? string.Empty;
+    var recommendations = ViewBag.Recommendations as IEnumerable<EventItem> ?? Enumerable.Empty<EventItem>();
 }
+
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="mb-1"><i class="fas fa-bullhorn me-2"></i>Local Events & Announcements</h2>
+                <p class="text-muted mb-0">Discover what's happening in your city and stay informed</p>
+            </div>
+            <div>
+                <a class="btn btn-secondary" href="/"><i class="fas fa-arrow-left me-2"></i>Main Menu</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="get" class="row g-3 mb-4">
+            <div class="col-md-5">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select">
+                    <option value="">All categories</option>
+                    @foreach (var c in categories)
+                    {
+                        <option value="@c" selected="@(c == selectedCategory ? "selected" : null)">@c</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label">Date</label>
+                <input type="date" name="date" class="form-control" value="@selectedDate" />
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-search me-2"></i>Search</button>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h5 class="mb-3"><i class="fas fa-calendar-day me-2 text-primary"></i>Upcoming</h5>
+                <div class="list-group">
+                    @if (!(Model as IEnumerable<EventItem>)!.Any())
+                    {
+                        <div class="list-group-item">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-info-circle text-muted me-2"></i>
+                                <span>No events found for your filters. Try different criteria.</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        foreach (var ev in (IEnumerable<EventItem>)Model)
+                        {
+                            <div class="list-group-item">
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <div class="me-3">
+                                        <h6 class="mb-1">@ev.Title</h6>
+                                        <div class="small text-muted mb-2">
+                                            <i class="far fa-clock me-1"></i>
+                                            @ev.StartDate.ToString("ddd, dd MMM yyyy HH:mm")
+                                            @if (ev.EndDate.HasValue)
+                                            {
+                                                <span> - @ev.EndDate.Value.ToString("HH:mm")</span>
+                                            }
+                                            <span class="ms-3"><i class="fas fa-location-dot me-1"></i>@ev.Location</span>
+                                        </div>
+                                        <p class="mb-0">@ev.Description</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-primary">@ev.Category</span>
+                                        @if (ev.IsAnnouncement)
+                                        {
+                                            <span class="badge bg-warning text-dark ms-1"><i class="fas fa-bell me-1"></i>Announcement</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="mb-3"><i class="fas fa-star me-2 text-success"></i>Recommended for you</h5>
+                <div class="list-group">
+                    @foreach (var ev in recommendations)
+                    {
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <div class="me-3">
+                                    <div class="fw-semibold">@ev.Title</div>
+                                    <div class="small text-muted">
+                                        <i class="far fa-clock me-1"></i>@ev.StartDate.ToString("dd MMM")
+                                        <span class="ms-2"><i class="fas fa-tag me-1"></i>@ev.Category</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="badge bg-primary">@ev.Category</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
