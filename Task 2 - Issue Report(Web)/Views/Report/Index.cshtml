@@ -22,6 +22,14 @@
             {
                 <div class="alert alert-success">
                     <i class="fas fa-check-circle me-2"></i>@TempData["Success"]
+                    @if (TempData["RequestId"] != null)
+                    {
+                        <div class="mt-2">
+                            <a href="/ServiceRequestStatus/Details?requestId=@TempData["RequestId"]" class="btn btn-sm btn-outline-light">
+                                <i class="fas fa-search me-1"></i>Track Your Request
+                            </a>
+                        </div>
+                    }
                 </div>
             }
 
@@ -223,7 +231,7 @@
 
         // Form validation and submission
         document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
 
             // Get form elements
             const location = document.getElementById('location').value.trim();
