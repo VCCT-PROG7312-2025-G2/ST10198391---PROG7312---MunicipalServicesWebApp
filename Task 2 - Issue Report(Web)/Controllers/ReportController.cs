@@ -8,12 +8,14 @@ namespace Task_2___Issue_Report_Web_.Controllers
     {
         private readonly IWebHostEnvironment _env;
         private readonly string _uploadFolder;
+        private readonly ServiceRequestStore _requestStore;
 
-        public ReportController(IWebHostEnvironment env)
+        public ReportController(IWebHostEnvironment env, ServiceRequestStore requestStore)
         {
             _env = env;
             _uploadFolder = Path.Combine(_env.WebRootPath, "uploads");
             if (!Directory.Exists(_uploadFolder)) Directory.CreateDirectory(_uploadFolder);
+            _requestStore = requestStore;
         }
 
         [HttpGet]
@@ -54,12 +56,7 @@ namespace Task_2___Issue_Report_Web_.Controllers
                 return RedirectToAction("Index");
             }
 
-            var issue = new Issue
-            {
-                Location = location,
-                Category = category,
-                Description = description
-            };
+            var attachments = new List<string>();
 
             // Saves uploaded files
             if (files != null && files.Any())
@@ -72,13 +69,39 @@ namespace Task_2___Issue_Report_Web_.Controllers
                         var savePath = Path.Combine(_uploadFolder, safeName);
                         using var stream = new FileStream(savePath, FileMode.Create);
                         f.CopyTo(stream);
-                        issue.Attachments.Add($"/uploads/{safeName}");
+                        attachments.Add($"/uploads/{safeName}");
                     }
                 }
             }
 
+            // Create ServiceRequest for tracking
+            var serviceRequest = new ServiceRequest
+            {
+                Location = location,
+                Category = category,
+                Description = description,
+                Attachments = attachments,
+                Status = RequestStatus.Submitted,
+                Priority = DeterminePriority(category, description),
+                SubmittedAt = DateTime.UtcNow
+            };
+
+            _requestStore.Add(serviceRequest);
+
+            // Also add to IssueStore for backward compatibility
+            var issue = new Issue
+            {
+                Id = serviceRequest.Id,
+                Location = location,
+                Category = category,
+                Description = description,
+                Attachments = attachments,
+                SubmittedAt = serviceRequest.SubmittedAt
+            };
             IssueStore.Add(issue);
-            TempData["Success"] = "Report submitted successfully!";
+
+            TempData["Success"] = $"Report submitted successfully! Your Request ID is: {serviceRequest.RequestId}";
+            TempData["RequestId"] = serviceRequest.RequestId;
             return RedirectToAction("Index");
         }
 
@@ -86,6 +109,30 @@ namespace Task_2___Issue_Report_Web_.Controllers
         public IActionResult List()
         {
             return View(IssueStore.Issues.OrderByDescending(i => i.SubmittedAt).ToList());
+        }
+
+        private int DeterminePriority(string category, string description)
+        {
+            var cat = category.ToLower();
+            var desc = description.ToLower();
+
+            if (cat.Contains("water") || cat.Contains("utilities") || desc.Contains("emergency") || desc.Contains("urgent"))
+            {
+                return 1; // Highest priority
+            }
+            else if (cat.Contains("roads") || cat.Contains("potholes") || desc.Contains("dangerous") || desc.Contains("hazard"))
+            {
+                return 2;
+            }
+            else if (cat.Contains("lighting") && (desc.Contains("dark") || desc.Contains("unsafe")))
+            {
+                return 3;
+            }
+            else if (cat.Contains("sanitation"))
+            {
+                return 4;
+            }
+            return 5; // Default priority
         }
     }
 }
