@@ -1,5 +1,165 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Task_2___Issue_Report_Web_.Models.ServiceRequest>
+@using Task_2___Issue_Report_Web_.Models
 @{
+    ViewData["Title"] = "Service Request Status";
+    var statuses = ViewBag.Statuses as RequestStatus[] ?? Array.Empty<RequestStatus>();
+    var categories = ViewBag.Categories as List<string> ?? new List<string>();
+    var requestId = ViewBag.RequestId as string ?? string.Empty;
+    var selectedCategory = ViewBag.SelectedCategory as string ?? string.Empty;
+    var selectedStatus = ViewBag.SelectedStatus as RequestStatus?;
 }
+
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="mb-1"><i class="fas fa-search me-2"></i>Track Service Requests</h2>
+                <p class="text-muted mb-0">Monitor the status of your service requests and see how we're addressing your concerns</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <img src="~/img/Logo_of_Cape_Town,_South_Africa.png" alt="City" class="brand-logo me-3" />
+                <a class="btn btn-secondary" href="/"><i class="fas fa-arrow-left me-2"></i>Main Menu</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <form method="get" action="/ServiceRequestStatus/Search" class="row g-3 mb-4">
+            <div class="col-md-4">
+                <label class="form-label"><i class="fas fa-id-card me-2"></i>Request ID</label>
+                <input type="text" name="requestId" class="form-control" placeholder="e.g., REQ-2025-001234" value="@requestId" />
+                <small class="form-text text-muted">Enter your unique request identifier to track a specific request</small>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label"><i class="fas fa-filter me-2"></i>Category</label>
+                <select name="category" class="form-select">
+                    <option value="">All categories</option>
+                    @foreach (var c in categories)
+                    {
+                        <option value="@c" selected="@(c == selectedCategory ? "selected" : null)">@c</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label"><i class="fas fa-info-circle me-2"></i>Status</label>
+                <select name="status" class="form-select">
+                    <option value="">All statuses</option>
+                    @foreach (var s in statuses)
+                    {
+                        <option value="@s" selected="@(selectedStatus.HasValue && selectedStatus.Value == s ? "selected" : null)">@s</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-search me-2"></i>Search</button>
+            </div>
+        </form>
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5><i class="fas fa-list me-2 text-primary"></i>Service Requests (@Model.Count)</h5>
+            <div class="btn-group" role="group">
+                <a href="/ServiceRequestStatus/Priority" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-star me-1"></i>Top Priority
+                </a>
+                <a href="/ServiceRequestStatus" class="btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-refresh me-1"></i>View All
+                </a>
+            </div>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="text-center py-5">
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                        <h4>No service requests found</h4>
+                        <p class="text-muted">Try adjusting your search criteria or submit a new service request.</p>
+                        <a href="/Report" class="btn btn-primary">Submit New Request</a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Submitted</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var request in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong class="text-primary">@request.RequestId</strong>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info">@request.Category</span>
+                                </td>
+                                <td>
+                                    <i class="fas fa-map-marker-alt me-1 text-muted"></i>@request.Location
+                                </td>
+                                <td>
+                                    @{
+                                        var statusClass = request.Status switch
+                                        {
+                                            RequestStatus.Submitted => "bg-secondary",
+                                            RequestStatus.UnderReview => "bg-info",
+                                            RequestStatus.InProgress => "bg-primary",
+                                            RequestStatus.OnHold => "bg-warning",
+                                            RequestStatus.Resolved => "bg-success",
+                                            RequestStatus.Closed => "bg-dark",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @statusClass">@request.Status</span>
+                                </td>
+                                <td>
+                                    @{
+                                        var priorityClass = request.Priority <= 2 ? "text-danger" : request.Priority <= 4 ? "text-warning" : "text-muted";
+                                    }
+                                    <span class="@priorityClass">
+                                        <i class="fas fa-flag me-1"></i>@request.Priority
+                                    </span>
+                                </td>
+                                <td>
+                                    <small>@request.SubmittedAt.ToLocalTime().ToString("MMM dd, yyyy")</small>
+                                </td>
+                                <td>
+                                    <small>@(request.UpdatedAt?.ToLocalTime().ToString("MMM dd, yyyy") ?? "N/A")</small>
+                                </td>
+                                <td>
+                                    <a href="/ServiceRequestStatus/Details?requestId=@request.RequestId" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        <div class="mt-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6 class="card-title"><i class="fas fa-info-circle me-2"></i>About Service Request Tracking</h6>
+                    <p class="card-text small mb-0">
+                        Our service request tracking system uses advanced data structures including Binary Search Trees, AVL Trees, Red-Black Trees, Heaps, and Graphs to efficiently organize and retrieve your service requests.
+                        You can track your requests using the unique Request ID provided when you submit a request.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
