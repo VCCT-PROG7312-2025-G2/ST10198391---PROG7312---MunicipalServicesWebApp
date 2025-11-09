@@ -1,3 +1,5 @@
+using Task_2___Issue_Report_Web_.Data;
+
 namespace Task_2___Issue_Report_Web_
 {
     public class Program
@@ -8,6 +10,13 @@ namespace Task_2___Issue_Report_Web_
 
             // Adds services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Register ServiceRequestStore as singleton
+            builder.Services.AddSingleton<ServiceRequestStore>(provider =>
+            {
+                var env = provider.GetRequiredService<IWebHostEnvironment>();
+                return new ServiceRequestStore(env.ContentRootPath);
+            });
 
             var app = builder.Build();
 
