@@ -1,0 +1,323 @@
+[
+  {
+    "Id": "fcfa90a2-36f3-4c8e-ac96-feb82b89624c",
+    "RequestId": "REQ-2025-183654",
+    "SubmittedAt": "2025-09-09T17:59:19.7155562Z",
+    "UpdatedAt": "2025-09-09T17:59:19.7155562Z",
+    "Location": "Cape Town",
+    "Category": "Water/Utilities",
+    "Description": "Leaking pipe!",
+    "Status": 4,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/61f22114-f24f-4215-9622-00e2e9df64e7_sb5.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "72df6e0b-5b2b-4550-b390-1e8cabc5b313",
+    "RequestId": "REQ-2025-159194",
+    "SubmittedAt": "2025-09-10T00:06:29.0957372Z",
+    "UpdatedAt": "2025-09-10T00:06:29.0957372Z",
+    "Location": "Cape Town",
+    "Category": "Lighting",
+    "Description": "fggfg",
+    "Status": 4,
+    "StatusNotes": null,
+    "Priority": 5,
+    "Attachments": [],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "6ef860e3-1cb0-47b5-ad39-d251d35f8fe6",
+    "RequestId": "REQ-2025-467882",
+    "SubmittedAt": "2025-09-10T00:41:18.2447986Z",
+    "UpdatedAt": "2025-09-10T00:41:18.2447986Z",
+    "Location": "Newlands",
+    "Category": "Roads",
+    "Description": "Broken and holey!",
+    "Status": 4,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/c79b4e95-b477-46b7-99e3-a341873572f6_starsuckslogo.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "25396f6b-7ea0-4e07-9c50-dd7220b84c73",
+    "RequestId": "REQ-2025-485110",
+    "SubmittedAt": "2025-10-13T18:12:41.3126258Z",
+    "UpdatedAt": "2025-10-13T18:12:41.3126258Z",
+    "Location": "Corner of Main Street and Oak Avenue",
+    "Category": "Sanitation",
+    "Description": "Large pile of garbage bags left on the sidewalk for 3 days. Smells terrible and attracting rats. Please send sanitation crew to collect immediately.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 4,
+    "Attachments": [
+      "/uploads/4dde96a1-c3d9-4385-8658-dcb983a636f4_9766-img-7957.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "713fde01-e77f-41e7-9dc4-8f03676d780f",
+    "RequestId": "REQ-2025-126792",
+    "SubmittedAt": "2025-10-13T18:13:05.9618374Z",
+    "UpdatedAt": "2025-10-13T18:13:05.9618374Z",
+    "Location": "123 Pine Street, outside apartment building",
+    "Category": "Sanitation",
+    "Description": "Broken glass bottles scattered across the pavement. Dangerous for pedestrians and pets. Needs urgent cleanup.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/dff02ea3-6576-4bda-b7cc-cd6cf5c20227_20201020_atw_pleading_800x800-380x380.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "436ed0ae-dcd3-4e4d-99d1-adaab63c26c7",
+    "RequestId": "REQ-2025-854966",
+    "SubmittedAt": "2025-10-13T18:13:38.2868074Z",
+    "UpdatedAt": "2025-10-13T18:13:38.2868074Z",
+    "Location": "Central Park playground area",
+    "Category": "Sanitation",
+    "Description": "Overflowing trash bins near the children\u0027s playground. Garbage is spilling onto the ground and creating a health hazard.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/f3a55e2e-12b8-40ee-a3ac-814d16a811b6_20535748.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "3dbc29e7-88d0-4059-81d8-9a338de8c3d5",
+    "RequestId": "REQ-2025-226330",
+    "SubmittedAt": "2025-10-13T18:14:34.9946793Z",
+    "UpdatedAt": "2025-10-13T18:14:34.9946793Z",
+    "Location": "Highway 101, between exits 15 and 16",
+    "Category": "Roads",
+    "Description": "Large pothole in the right lane causing vehicle damage. Multiple cars have reported flat tires. Needs immediate repair.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/5ec72413-6628-4087-9a26-4a4b903600db_637734131992932677.jpeg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "5179934c-881e-41c2-9967-b5d693e5adbe",
+    "RequestId": "REQ-2025-617208",
+    "SubmittedAt": "2025-10-13T18:15:02.0702391Z",
+    "UpdatedAt": "2025-10-13T18:15:02.0702391Z",
+    "Location": "Elm Street, near the intersection with Maple Drive",
+    "Category": "Roads",
+    "Description": "Road surface is severely cracked and uneven. Makes driving uncomfortable and potentially dangerous, especially in wet weather.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/840a802b-f002-4a40-98c2-0455ea1f3fa0_Crying_Emoji_Icon_2_large.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "4ccb9e27-1de8-4f14-9928-a23dc0fb2cd2",
+    "RequestId": "REQ-2025-468927",
+    "SubmittedAt": "2025-10-13T18:15:42.4829893Z",
+    "UpdatedAt": "2025-10-13T18:15:42.4829893Z",
+    "Location": "Downtown Main Street, between 2nd and 3rd Avenue",
+    "Category": "Roads",
+    "Description": "Missing road sign for \u0022No Parking\u0022 zone. Cars are parking illegally and blocking traffic flow during rush hour.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/ce8acf24-4b0b-4866-9dd1-8c7c6abe621f_EcdrDGrXQAINEwm.jpg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "ae6f3619-083c-498d-8e38-a000da97c18d",
+    "RequestId": "REQ-2025-590465",
+    "SubmittedAt": "2025-10-13T18:16:30.2517409Z",
+    "UpdatedAt": "2025-10-13T18:16:30.2517409Z",
+    "Location": "456 Water Street, apartment complex",
+    "Category": "Water/Utilities",
+    "Description": "Water pressure is extremely low throughout the building. Residents can barely shower or wash dishes. Issue started 2 days ago.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/b0772b99-24f0-44d5-bffd-b6d0a219079c_facepalm-homer-simpson.gif"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "5a8de148-e3d3-48e0-ab45-3eb4b214a7d8",
+    "RequestId": "REQ-2025-164145",
+    "SubmittedAt": "2025-10-13T18:16:55.0835406Z",
+    "UpdatedAt": "2025-10-13T18:16:55.0835406Z",
+    "Location": "Industrial area, Factory Road",
+    "Category": "Water/Utilities",
+    "Description": "Water main leak causing flooding on the street. Water is pooling and creating traffic hazards. Emergency repair needed",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/2ecb0a07-de4d-4919-bab0-ff00c4ebecac_fadding-simpsons.gif"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "61cf8798-e6d9-4a29-8b61-ff54433ad064",
+    "RequestId": "REQ-2025-883477",
+    "SubmittedAt": "2025-10-13T18:17:22.9008498Z",
+    "UpdatedAt": "2025-10-13T18:17:22.9008498Z",
+    "Location": "789 Garden Lane, residential area",
+    "Category": "Water/Utilities",
+    "Description": "Sewer backup causing foul odors and potential health risks. Wastewater is backing up into street drains.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/81f814b3-9845-4372-ad2b-8a05ab79f3df_images (1).jpeg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "81ad8318-3266-40df-97a6-1dccf3b36494",
+    "RequestId": "REQ-2025-974741",
+    "SubmittedAt": "2025-10-13T18:18:07.077556Z",
+    "UpdatedAt": "2025-10-13T18:18:07.077556Z",
+    "Location": "Oak Park walking trail, near the pond",
+    "Category": "Lighting",
+    "Description": "Street light has been out for over a week. The area is completely dark at night, making it unsafe for evening walkers and joggers.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 3,
+    "Attachments": [
+      "/uploads/9581d044-6de3-4725-9628-f08ba05f9041_images (2).jpeg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "78dda750-41b5-4e41-8849-510ab2c2d0b6",
+    "RequestId": "REQ-2025-749485",
+    "SubmittedAt": "2025-10-13T18:18:46.4364352Z",
+    "UpdatedAt": "2025-10-13T18:18:46.4364352Z",
+    "Location": "Downtown parking garage, Level 2",
+    "Category": "Lighting",
+    "Description": "Multiple fluorescent lights are flickering and some are completely out. Creates poor visibility and security concerns for parked vehicles.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 5,
+    "Attachments": [
+      "/uploads/c861de61-1221-4441-9ee5-788d60b8583a_images.jpeg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "1255e517-81a6-4cf0-a828-392354fefe69",
+    "RequestId": "REQ-2025-912863",
+    "SubmittedAt": "2025-10-13T18:19:20.6281636Z",
+    "UpdatedAt": "2025-10-13T18:19:20.6281636Z",
+    "Location": "Residential area, Cherry Blossom Street",
+    "Category": "Lighting",
+    "Description": "Street light is too dim and doesn\u0027t provide adequate illumination. The area feels unsafe for residents walking at night.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 3,
+    "Attachments": [
+      "/uploads/90360fcc-aec1-4dcc-b51a-e0df3fe7dc4e_istockphoto-492810896-612x612.jpg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "c9b6573b-5b4d-4dcc-bd5e-e5a90ee3e8f6",
+    "RequestId": "REQ-2025-999653",
+    "SubmittedAt": "2025-10-13T18:19:52.5348978Z",
+    "UpdatedAt": "2025-10-13T18:19:52.5348978Z",
+    "Location": "Bridge Street, near the railway crossing",
+    "Category": "Potholes",
+    "Description": "Deep pothole in the middle of the road. Vehicles are swerving to avoid it, creating dangerous driving conditions. Needs urgent attention.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 1,
+    "Attachments": [
+      "/uploads/d4d76be4-5063-4ba8-901c-2fbbab320c94_png-transparent-sad-emoji-art-face-with-tears-of-joy-emoji-crying-emoticon-cry-smiley-sphere-computer-icons-thumbnail.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "3239c4c1-4605-49a3-bf01-6df3be419de6",
+    "RequestId": "REQ-2025-579917",
+    "SubmittedAt": "2025-10-13T18:20:22.0229343Z",
+    "UpdatedAt": "2025-10-13T18:20:22.0229343Z",
+    "Location": "School zone, Education Avenue",
+    "Category": "Potholes",
+    "Description": "Multiple small potholes forming a rough patch of road. Parents dropping off children are complaining about vehicle damage and safety concerns.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/992e57ef-c623-4b8b-8a15-ae423bd38199_PS516.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "03e4234b-c26a-422a-927e-17253dc9d61d",
+    "RequestId": "REQ-2025-967366",
+    "SubmittedAt": "2025-10-13T18:20:47.5565811Z",
+    "UpdatedAt": "2025-10-13T18:20:47.5565811Z",
+    "Location": "Community center parking lot",
+    "Category": "Other",
+    "Description": "Graffiti vandalism on the community center walls. Inappropriate language and images that are not suitable for families visiting the center. Needs cleanup and possible security measures.",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 5,
+    "Attachments": [
+      "/uploads/5e131ae7-c95d-4709-be62-4cc9e2fe6e2d_x37wd2mzh6n31.png"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  },
+  {
+    "Id": "eb61d23a-fe8e-4e69-b816-d0c904906ed6",
+    "RequestId": "REQ-2025-827721",
+    "SubmittedAt": "2025-10-13T18:40:53.2388174Z",
+    "UpdatedAt": "2025-10-13T18:40:53.2388174Z",
+    "Location": "45 Drivetown Rd. Springway",
+    "Category": "Potholes",
+    "Description": "Multiple potholes around the streets! They need to be fixed! My tires are getting RUINED!!",
+    "Status": 2,
+    "StatusNotes": null,
+    "Priority": 2,
+    "Attachments": [
+      "/uploads/de855a06-cac7-4b82-89d3-a269c41c250f_images (2).jpeg"
+    ],
+    "AssignedTo": null,
+    "EstimatedCompletionDate": null
+  }
+]
