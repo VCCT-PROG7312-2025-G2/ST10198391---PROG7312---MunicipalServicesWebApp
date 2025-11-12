@@ -4,6 +4,16 @@ A lightweight ASP.NET Core MVC application for reporting municipal issues and vi
 
 ---
 
+## 🎥 Video Demonstration
+
+Watch a full demonstration of the website in action:
+
+[![Watch the Demo](https://img.youtube.com/vi/gl6yZWCxuKY/0.jpg)](https://youtu.be/gl6yZWCxuKY)
+
+[Direct Link: https://youtu.be/gl6yZWCxuKY](https://youtu.be/gl6yZWCxuKY)
+
+---
+
 ## ✨ Features
 - 📝 Report community issues with description, category, and optional image upload
 - 🗂️ View a list of all reported issues
